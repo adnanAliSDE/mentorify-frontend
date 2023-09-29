@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorify - Video Call Connection</title>
+    <!-- Include your CSS and other meta tags here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <style>
+        /* Custom styles go here */
+        /* Loading Spinner */
+        .spinner {
+            border-top: 4px solid #00986d;
+            /* Blue-600 */
+            border-right: 4px solid transparent;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 10% auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class=" font-sans bg-gray-100 h-[100vh] flex items-center justify-center">
+
+    <main class="px-4 mt-40">
+        <!-- Loading Spinner -->
+        <div class="spinner"></div>
+        <h2 class="text-2xl font-semibold text-center">Matching to a relevant mentor...</h2>
+    </main>
+</body>
+
+</html>

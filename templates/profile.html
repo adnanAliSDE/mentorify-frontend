@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - Mentorify</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="profile.css">
+    <!-- Include the Cropper.js library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+
+
+    <style>
+        /* Custom styles for the profile page */
+
+        /* Edit button styles */
+        #editBasicDetails,
+        #editAchievements {
+            cursor: pointer;
+        }
+
+        /* Profile image styles */
+        #profileImage {
+            object-fit: cover;
+        }
+
+        /* Description styles */
+        #bioText {
+            max-height: 6rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100">
+    <main class="container mx-auto py-8">
+        <!-- Edit Basic Details Modal -->
+        <div id="editBasicDetailsModal"
+            class="fixed hidden inset-0 z-50  justify-center items-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+            <div class="relative  w-auto my-6 mx-auto max-w-3xl">
+                <!-- Modal content -->
+                <div
+                    class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    <!-- Header -->
+                    <div
+                        class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                        <h3 class="text-3xl font-semibold">
+                            Edit Basic Details
+                        </h3>
+                        <button id="closeEditBasicDetailsModal"
+                            class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
+                            <span
+                                class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                                ×
+                            </span>
+                        </button>
+                    </div>
+                    <!-- Body -->
+                    <div class="relative p-6 flex-auto">
+                        <!-- Add your form fields here -->
+                        <div class="form-group">
+                            <label for="name" class="block text-gray-700 text-sm font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name"
+                                class="w-full py-2 px-3 rounded-md border border-gray-300 focus:ring focus:ring-green-200 focus:outline-none focus:ring-opacity-50"
+                                placeholder="Your Name">
+                        </div>
+
+
+                        <div class="form-group mt-4">
+                            <label for="title" class="block text-gray-700 text-sm font-medium mb-2">Title</label>
+                            <input type="text" id="title" name="title"
+                                class="w-full py-2 px-3 rounded-md border border-gray-300 focus:ring focus:ring-green-200 focus:outline-none focus:ring-opacity-50"
+                                placeholder="title">
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full py-2 px-3 rounded-md border border-gray-300 focus:ring focus:ring-green-200 focus:outline-none focus:ring-opacity-50"
+                                placeholder="Your Email">
+                        </div>
+
+                        <!-- Career Interests Edit Field with Suggestions -->
+                        <div class="form-group mt-4">
+                            <label for="career-interests" class="block text-gray-700 text-sm font-medium mb-2">Career
+                                Interests</label>
+                            <input type="text" id="career-interests" name="career-interests"
+                                class="w-full py-2 px-3 rounded-md border border-gray-300 focus:ring focus:ring-green-200 focus:outline-none focus:ring-opacity-50"
+                                placeholder="Your Career Interests">
+                            <!-- Suggestions Container -->
+                            <div id="careerInterestsSuggestions" class="mt-2"></div>
+                        </div>
+                        <div id="addedInterests" class="mt-2 flex flex-wrap"></div>
+
+
+
+                        <!-- Add more form fields (email, phone, career interests, etc.) here -->
+                        <div class="form-group">
+                            <label for="description"
+                                class="block text-gray-700 text-sm font-medium mt-4 mb-2">Description</label>
+                            <textarea id="description" name="description"
+                                class="w-full h-24 py-2 px-3 rounded-md border border-gray-300 focus:ring focus:ring-green-200 focus:outline-none focus:ring-opacity-50"
+                                placeholder="Tell us about yourself (250 words limit)"></textarea>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                        <button id="saveBasicDetailsBtn"
+                            class="bg-green-600 text-white active:bg-green-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button">
+                            Save
+                        </button>
+                        <button id="cancelBasicDetailsBtn"
+                            class="text-gray-600 background-transparent font-bold uppercase px-6 py-3 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Basic Details Section -->
+        <section class="bg-white p-4 shadow-md rounded-lg mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Basic Details</h2>
+                <button id="editBasicDetails" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-pencil-alt"></i> Edit
+                </button>
+            </div>
+
+
+            <!-- Modal for cropping -->
+            <div id="cropModal" class="hidden">
+                <div id="cropContainer">
+                    <img id="cropImage" src="" alt="Cropped Image Preview">
+                </div>
+                <button id="cropButton">Crop and Save</button>
+            </div>
+
+            <!-- Actual profile picture -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <img id="profileImage" src="../static/images/profile_images/p1.jpg" alt="Profile Image"
+                        class="w-32 h-32 rounded-full mx-auto">
+                    <button id="changeProfileBtn" class="block mt-2 mx-auto text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-camera"></i> Change Profile
+                    </button>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700">John Doe</h3>
+                    <p class="text-gray-600">Aspiring web developer</p>
+                    <br>
+                    <p class="text-gray-600"><b> Career Interests:</b> Computer Science, Programming</p>
+                    <p class="text-gray-600"><b> Email: </b>johndoe@example.com</p>
+                </div>
+            </div>
+            <h3 class="mt-4 font-bold text-gray-600">Description:</h3>
+            <p id="bioText" class="text-gray-700">
+                "Rohan Malhotra is a passionate and driven student with a keen interest in technology and innovation.
+                With a relentless curiosity and a thirst for knowledge, Rohan is always eager to explore the world of
+                computer science and push the boundaries of what's possible in the digital realm. When he's not immersed
+                in coding and software development, you can find Rohan seeking inspiration in the great outdoors, as
+                he's an avid hiker and nature enthusiast. His dedication to learning and his adventurous spirit make him
+                a standout member of our academic community. Rohan is currently pursuing a Bachelor's degree in Computer
+                Science and is open to connecting with mentors and peers who share his enthusiasm for the world of
+                technology and innovation."
+            </p>
+        </section>
+
+        <!-- Acheivements modal -->
+        <!-- Add this button to trigger the achievements modal -->
+
+        <!-- Create the modal HTML structure -->
+        <div id="achievementsModal"
+            class="fixed hidden inset-0 z-50  justify-center items-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+            <div class="relative w-auto my-6 mx-auto max-w-3xl">
+                <!-- Modal content -->
+                <div
+                    class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    <!-- Header -->
+                    <div
+                        class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                        <h3 class="text-3xl font-semibold">Edit Achievements</h3>
+                        <button id="closeAchievementsModal"
+                            class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
+                            <span
+                                class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                                ×
+                            </span>
+                        </button>
+                    </div>
+                    <!-- Body -->
+                    <div class="relative p-6 flex-auto">
+                        <ul id="achievementsList" class="list-disc list-inside text-gray-700">
+                            <!-- Achievements will be dynamically added here -->
+                        </ul>
+                        <!-- Button to add a new achievement -->
+                        <button id="addAchievementBtn"
+                            class="bg-green-600 text-white active:bg-green-700 mt-4 px-4 py-2 rounded">
+                            Add Achievement
+                        </button>
+                    </div>
+                    <!-- Footer -->
+                    <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                        <button id="saveAchievementsBtn"
+                            class="bg-green-600 text-white active:bg-green-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button">
+                            Save
+                        </button>
+                        <button id="cancelAchievementsBtn"
+                            class="text-gray-600 background-transparent font-bold uppercase px-6 py-3 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <section class="bg-white p-4 shadow-md rounded-lg">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Achievements</h2>
+                <button id="editAchievements" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-pencil-alt"></i> Edit
+                </button>
+            </div>
+            <ul id="achievementsList" class="list-disc list-inside text-gray-700">
+                <li>First Place in Coding Competition 2022</li>
+                <li>Published Research Paper in Computer Science</li>
+                <li>Volunteer of the Year Award</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="../static/scripts/profile.js"></script>
+    <!-- Cropper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+
+</body>
+
+</html>

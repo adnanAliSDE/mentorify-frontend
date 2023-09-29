@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorify - Mentorship</title>
+    <!-- Include your CSS and other meta tags here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <style>
+        /* Custom styles go here */
+        /* Buttons */
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            animation: spin 2s ease-in-out infinite;
+        }
+
+        .btn {
+            background-color: #00986d;
+            /* Blue-600 */
+            color: #ffffff;
+            /* Text White */
+        }
+
+        /* Sticky button */
+        .sticky-btn,
+        .sticky-btn .btn {
+            position: fixed;
+            bottom: 20px;
+            /* Adjust the desired position */
+            z-index: 2;
+            /* Ensure it's above other content */
+            background-color: black;
+            /* Blue-600 */
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100">
+    <header>
+        <!-- Navbar -->
+        <nav class="bg-green-600 p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-white text-2xl font-semibold">Mentorify</a>
+                <!-- Hamburger menu for mobile -->
+                <button id="mobile-menu-toggle" class="block lg:hidden text-white hover:text-green-300">
+                    <div class="bar w-6 h-1 bg-white mb-1"></div>
+                    <div class="bar w-6 h-1 bg-white mb-1"></div>
+                    <div class="bar w-6 h-1 bg-white"></div>
+                </button>
+                <ul id="mobile-menu" class="hidden lg:flex space-x-4">
+                    <li><a href="#" class="text-white">Home</a></li>
+                    <li><a href="#" class="text-white">About</a></li>
+                    <li><a href="#" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <main class="px-4">
+
+
+
+        <!-- Search Bar -->
+        <div class="p-4">
+            <div class="container mx-auto">
+                <!-- Add your search bar HTML here -->
+                <form class="mb-4">
+                    <label>Enter Industry name of mentors</label>
+                    <br>
+                    <div class="flex items-center mt-3">
+                        <input type="text" class="rounded-md-l p-2 w-full" placeholder="Enter industry name">
+                        <a href="/search">
+                            <button class="btn p-2 h-full rounded-md-r">Search</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Mentor Profiles -->
+        <section class="px-8">
+            <h2 class="text-xl mb-6 font-bold">Career Mentors in software Development</h2>
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mentor Card 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                    <!-- Mentor Image and Online Status Indicator -->
+                    <div class="flex items-center mb-4">
+                        <img src="../static/images/profile_images/p1.jpg" alt="Mentor's Image"
+                            class="w-20 h-20 rounded-full mr-4">
+                        <div class="text-group">
+                            <h3 class="text-lg font-semibold mb-1/2">John Doe</h3>
+                            <p class="text-gray-500">Software Engineer</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievements (Example: 3-4 achievements) -->
+                    <ul class="list-disc list-inside mb-4">
+                        <li>10+ years of experience</li>
+                        <li>Published author</li>
+                        <li>Industry award winner</li>
+                    </ul>
+
+                    <!-- Button Group -->
+                    <div class="flex justify-center w-full">
+                        <button class="btn px-10 py-2 w-1/2 rounded-md">Go Live</button>
+                        <button class="btn schedule-btn px-10 py-2 w-1/2 rounded-md ml-2">Schedule</button>
+                    </div>
+                </div>
+
+                <!-- Mentor Card 2 -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                    <!-- Mentor Image and Online Status Indicator -->
+                    <div class="flex items-center mb-4">
+                        <img src="../static/images/profile_images/p2.jpg" alt="Mentor's Image"
+                            class="w-20 h-20 rounded-full mr-4">
+                        <div class="text-group">
+                            <h3 class="text-lg font-semibold mb-1/2">Alice Smith</h3>
+                            <p class="text-gray-500">Software Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievements (Example: 3-4 achievements) -->
+                    <ul class="list-disc list-inside mb-4">
+                        <li>15+ years of experience</li>
+                        <li>Open-source contributor</li>
+                        <li>Speaker at tech conferences</li>
+                    </ul>
+
+                    <!-- Button Group -->
+                    <div class="flex justify-center w-full">
+                        <button class="btn w-1/2 px-10 py-2 rounded-md">Go Live</button>
+                        <button class="btn schedule-btn px-10 py-2 w-1/2 rounded-md ml-2">Schedule</button>
+                    </div>
+                </div>
+
+                <!-- Mentor Card 3 -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                    <!-- Mentor Image and Online Status Indicator -->
+                    <div class="flex items-center mb-4">
+                        <img src="../static/images/profile_images/p3.jpg" alt="Mentor's Image"
+                            class="w-20 h-20 rounded-full mr-4">
+                        <div class="text-group">
+                            <h3 class="text-lg font-semibold mb-1/2">Robert Johnson</h3>
+                            <p class="text-gray-500">Software Architect</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievements (Example: 3-4 achievements) -->
+                    <ul class="list-disc list-inside mb-4">
+                        <li>20+ years of experience</li>
+                        <li>Patent holder</li>
+                        <li>Leadership in tech companies</li>
+                    </ul>
+
+                    <!-- Button Group -->
+                    <div class="flex justify-center w-full">
+                        <button class="btn px-10 py-2 w-1/2 rounded-md">Go Live</button>
+                        <button class="btn schedule-btn px-10 py-2 w-1/2 rounded-md ml-2">Schedule</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- add transparency and bg to popup -->
+        <section id="schedule-popup"
+            class="bg-gray-300 flex items-center justify-center p-4 justify-center fixed top-0 right-0 w-full h-full z-index-100">
+            <div class="wrapper p-4 bg-white w-full  items-center md:w-1/3 rounded-md w-1/3 ">
+                <section class="step-1 step hidden">
+
+                    <div class="popup-header mb-3 flex justify-between">
+                        <h2 class="text-2xl font-bold">Schedule your session</h2>
+                        <span class="px-3 py-1.5 bg-gray-200 rounded-full">&times;</span>
+                    </div>
+                    <form action="/schedule" method="post">
+                        <div class="form-group mb-4">
+                            <label class="font-bold" for="time">Time</label>
+                            <br>
+                            <input class="mt-2 p-4 bg-gray-100 w-full rounded-md" type="datetime-local" name="time"
+                                id="time" placeholder="Select a time">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="font-bold" for="desc">Your Session Description</label>
+                            <br>
+                            <textarea class="mt-2 bg-gray-100 p-4 w-full rounded-md" name="desc" id="desc" cols="30"
+                                rows="4" placeholder="Describe your need for the session(optional)"></textarea>
+                        </div>
+                        <button class="submitBtn btn w-full p-2 rounded-md">Schedule</button>
+                    </form>
+                </section>
+
+                <section class="step-2 step hidden">
+                    <div class="message flex justify-center">
+                        <h3 class="text-xl  text-center mr-4">Scheduling the session</h3>
+                        <div class="spinner border-4 border-r-0 border-b-0 border-green-600 w-8 h-8 rounded-full">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="step-3 step flex flex-col items-center">
+                    <span class="border-green-600 border-2 mb-4 bg-green-100 text-green-600 rounded-full p-1 px-3"> &check;</span>
+                    <h3 class="text-xl">Session sheduled successfully
+                    </h3>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- Connect with Random Mentor Button (Sticky) -->
+        <div class="sticky-btn -z-index-1">
+            <button class="btn px-10 py-3 rounded-md">Connect with Random Mentor</button>
+        </div>
+    </main>
+
+
+    <script src="../static/scripts/mentorship.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorify - Home</title>
+    <!-- Include your CSS and other meta tags here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+
+    <style>
+        /* Custom styles go here */
+        /* Hamburger animation */
+        #mobile-menu-toggle .bar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mobile-menu-toggle.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-4px, 4px);
+        }
+
+        #mobile-menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        #mobile-menu-toggle.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-4px, -4px);
+        }
+
+        /* Desktop Hero Section */
+        .hero-desktop {
+            background-image: url('images/desktop-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            /* Adjust the height as needed */
+        }
+
+        /* Mobile Hero Section */
+        .hero-mobile {
+            background-image: url('images/mobile-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            /* Adjust the height as needed */
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100">
+    <header>
+        <!-- Navbar -->
+        <nav class="bg-green-600 p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-white text-2xl font-semibold">Mentorify</a>
+                <!-- Hamburger menu for mobile -->
+                <button id="mobile-menu-toggle" class="block lg:hidden text-white hover:text-green-300">
+                    <div class="bar w-6 h-1 bg-white mb-1"></div>
+                    <div class="bar w-6 h-1 bg-white mb-1"></div>
+                    <div class="bar w-6 h-1 bg-white"></div>
+                </button>
+                <ul id="mobile-menu" class="hidden lg:flex space-x-4">
+                    <li><a href="#" class="text-white">Home</a></li>
+                    <li><a href="#" class="text-white">About</a></li>
+                    <li><a href="./profile" class="text-white">Profile</a></li>
+                    <li><a href="#" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-green-600 text-white py-16 px-4">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl font-semibold mb-4">Welcome to Mentorify</h1>
+                <p class="text-lg mb-8">Connect with mentors, peers, and professionals for career guidance and mental
+                    health support.</p>
+                <a href="./login.html"
+                    class="bg-blue-500 text-white-900 hover:bg-yellow-400 py-2 px-6 rounded-full text-lg font-semibold transition duration-300 ease-in-out">Get
+                    Started</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container mx-auto py-16 px-4">
+            <h2 class="text-3xl font-semibold text-center mb-8">Key Features</h2>
+            <div class="feature-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Career Mentorship</h3>
+                    <p class="text-gray-700">Connect with experienced professionals in your field of interest for
+                        mentorship.</p>
+                    <a href="./mentorship.html">
+                        <button
+                            class="btn btn-primary bg-green-600 text-white px-4 py-2 mt-4 w-full text-center rounded-md">View</button>
+                    </a>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Mental Health Support</h3>
+                    <p class="text-gray-700">Access 1:1 sessions with top-notch mental health professionals.</p>
+                    <a href="./consultants.html">
+                        <button
+                            class="btn btn-primary bg-green-600 text-white px-4 py-2 mt-4 w-full text-center rounded-md">View</button>
+                    </a>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Peer-to-Peer Help</h3>
+                    <p class="text-gray-700">Connect with peers who can provide support and guidance.</p>
+                    <a href="./peers.html">
+                        <button
+                            class="btn btn-primary bg-green-600 text-white px-4 py-2 mt-4 w-full text-center rounded-md">View</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Mentorify. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu -->
+    <script>
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuToggle.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

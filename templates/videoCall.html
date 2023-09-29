@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorify - Video Call</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+</head>
+
+<body class="font-sans bg-gray-100">
+    <main class="px-4 h-screen relative">
+        <!-- Video Call Interface -->
+        <!-- Mentor Video (Full Screen) -->
+        <!-- Full Window Toggle Icon -->
+<div class="absolute top-4 right-4">
+    <button id="fullWindowButton" class="btn p-2 rounded-full bg-blue-500 text-white">
+        hii <!-- FontAwesome expand icon -->
+    </button>
+</div>
+
+        <div class="absolute inset-0 bg-black">
+            <video id="mentorVideo" class="w-full h-full object-cover" autoplay muted loop></video>
+        </div>
+
+        <!-- Student Video (draggable) -->
+        <div id="studentVideoContainer" class="w-32 h-48 fixed bottom-4 right-4">
+            <video id="studentVideo" class="w-full h-full bg-gray-600" autoplay></video>
+        </div>
+
+        <!-- Mentor Name -->
+        <h3 class="text-2xl font-semibold text-center text-gray-800 mt-4 absolute top-4 left-1/2 transform -translate-x-1/2 bg-white rounded px-4 py-2">
+           Adnan Ali
+        </h3>
+
+        <!-- Control Buttons (Floating) -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
+            <button id="muteButton" class="btn p-2 rounded-full bg-red-500 text-white">Unmute</button>
+            <button id="cameraButton" class="btn p-2 rounded-full bg-red-500 text-white">Camera On</button>
+            <button id="disconnectButton" class="btn p-2 rounded-full bg-red-500 text-white">Disconnect</button>
+        </div>
+    </main>
+
+    <script src="../static/scripts/videoCall.js"></script>
+</body>
+
+</html>

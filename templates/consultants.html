@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorify - Peer Support</title>
+    <!-- Include your CSS and other meta tags here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <style>
+        /* Custom styles go here */
+        /* Buttons */
+        .btn {
+            background-color: #00986d;
+            /* Blue-600 */
+            color: #ffffff;
+            /* Text White */
+        }
+
+        /* Sticky button */
+        .sticky-btn,
+        .sticky-btn .btn {
+            position: fixed;
+            bottom: 20px;
+            /* Adjust the desired position */
+            z-index: 1000;
+            /* Ensure it's above other content */
+            background-color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100">
+    <header>
+        <!-- Navbar -->
+        <nav class="bg-green-600 p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-white text-2xl font-semibold">Mentorify</a>
+                <!-- Hamburger menu for mobile -->
+                <button id="mobile-menu-toggle" class="block lg:hidden text-white hover:text-green-300">
+                    <div class="bar w-6 h-1 bg-white mb-1"></div>
+                    <div class="bar w-6 h-1 bg-white mb-1"></div>
+                    <div class="bar w-6 h-1 bg-white"></div>
+                </button>
+                <ul id="mobile-menu" class="hidden lg:flex space-x-4">
+                    <li><a href="#" class="text-white">Home</a></li>
+                    <li><a href="#" class="text-white">About</a></li>
+                    <li><a href="#" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="px-4">
+        <!-- Add your content for Peer Support here -->
+        <!-- Search Bar -->
+        <div class="p-4">
+            <div class="container mx-auto">
+                <!-- Add your search bar HTML here -->
+                <form class="mb-4">
+                    <label>Enter Industry name of peers</label>
+                    <br>
+                    <div class="flex items-center mt-3">
+                        <input type="text" class="rounded-md-l p-2 w-full" placeholder="Enter industry name">
+                        <a href="/search">
+                            <button class="btn p-2 h-full rounded-md-r">Search</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Peer Profiles - You can repeat these profiles as needed -->
+        <!-- Peer Profiles - You can repeat these profiles as needed -->
+        <section class="px-8">
+            <h2 class="text-xl mb-6 font-bold">Peer Support in Software Development</h2>
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Peer Card 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                    <!-- Peer Image and Online Status Indicator -->
+                    <div class="flex items-center mb-4">
+                        <img src="./images/profile_images/s1.jpg" alt="Peer's Image"
+                            class="w-20 h-20 rounded-full mr-4">
+                        <div class="text-group">
+                            <h3 class="text-lg font-semibold mb-1/2">Sarah Davis</h3>
+                            <p class="text-gray-500">Front-end Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievements (Example: 3-4 achievements) -->
+                    <ul class="list-disc list-inside mb-4">
+                        <li>6+ years of web development experience</li>
+                        <li>UX/UI design enthusiast</li>
+                        <li>Contributor to open-source projects</li>
+                    </ul>
+
+                    <!-- Button Group -->
+                    <div class="flex justify-center w-full">
+                        <button class="btn px-10 py-2 w-1/2 rounded-md">Video Call</button>
+                        <button class="btn px-10 py-2 w-1/2 rounded-md ml-2">Chat</button>
+                    </div>
+                </div>
+                <!-- Peer Card 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                    <!-- Peer Image and Online Status Indicator -->
+                    <div class="flex items-center mb-4">
+                        <img src="./images/profile_images/s3.jpg" alt="Peer's Image"
+                            class="w-20 h-20 rounded-full mr-4">
+                        <div class="text-group">
+                            <h3 class="text-lg font-semibold mb-1/2">Sarah Davis</h3>
+                            <p class="text-gray-500">Front-end Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievements (Example: 3-4 achievements) -->
+                    <ul class="list-disc list-inside mb-4">
+                        <li>6+ years of web development experience</li>
+                        <li>UX/UI design enthusiast</li>
+                        <li>Contributor to open-source projects</li>
+                    </ul>
+
+                    <!-- Button Group -->
+                    <div class="flex justify-center w-full">
+                        <button class="btn px-10 py-2 w-1/2 rounded-md">Video Call</button>
+                        <button class="btn px-10 py-2 w-1/2 rounded-md ml-2">Chat</button>
+                    </div>
+                </div>
+                <!-- Peer Card 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                    <!-- Peer Image and Online Status Indicator -->
+                    <div class="flex items-center mb-4">
+                        <img src="./images/profile_images/s2.jpg" alt="Peer's Image"
+                            class="w-20 h-20 rounded-full mr-4">
+                        <div class="text-group">
+                            <h3 class="text-lg font-semibold mb-1/2">Sarah Davis</h3>
+                            <p class="text-gray-500">Front-end Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievements (Example: 3-4 achievements) -->
+                    <ul class="list-disc list-inside mb-4">
+                        <li>6+ years of web development experience</li>
+                        <li>UX/UI design enthusiast</li>
+                        <li>Contributor to open-source projects</li>
+                    </ul>
+
+                    <!-- Button Group -->
+                    <div class="flex justify-center w-full">
+                        <button class="btn px-10 py-2 w-1/2 rounded-md">Video Call</button>
+                        <button class="btn px-10 py-2 w-1/2 rounded-md ml-2">Chat</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect with Random Peer Button (Sticky) -->
+        <div class="sticky-btn">
+            <button class="btn px-10 py-3 rounded-md">Connect with Random Peer</button>
+        </div>
+    </main>
+
+    <!-- JavaScript for mobile menu -->
+    <script>
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuToggle.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuToggle.classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>
