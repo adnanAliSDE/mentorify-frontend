@@ -219,81 +219,101 @@ cropButton.addEventListener('click', function () {
     }, 'image/jpeg'); // Set the desired image format (e.g., JPEG)
 });
 
+// Edit achievements
+document.addEventListener('DOMContentLoaded', function () {
+    // Achievements Data (You can fetch this from your backend)
+    let achievements = [
+        "First Place in Coding Competition 2022",
+        "Published Research Paper in Computer Science",
+        "Volunteer of the Year Award",
+        "Hello World"
+    ];
 
-// Editing achievements
-// JavaScript code to show and hide the achievements modal
-const achievementsModal = document.getElementById('achievementsModal');
-const editAchievementsBtn = document.getElementById('editAchievements');
-const closeAchievementsModalBtn = document.getElementById('closeAchievementsModal');
-const saveAchievementsBtn = document.getElementById('saveAchievementsBtn');
-const cancelAchievementsBtn = document.getElementById('cancelAchievementsBtn');
+    // Function to display achievements in the main section
+    function displayAchievements() {
+        console.log(achievements);
+        const achievementsList = document.getElementById('achievementsList');
+        achievementsList.innerHTML = '';
 
-// Show the achievements modal when the "Edit" button is clicked
-editAchievementsBtn.addEventListener('click', () => {
-    achievementsModal.classList.remove('hidden');
-});
-
-// Hide the achievements modal when the close button is clicked
-closeAchievementsModalBtn.addEventListener('click', () => {
-    achievementsModal.classList.add('hidden');
-});
-
-// Hide the achievements modal when the "Cancel" button is clicked
-cancelAchievementsBtn.addEventListener('click', () => {
-    achievementsModal.classList.add('hidden');
-});
-
-// JavaScript code to dynamically add achievements to the modal
-const achievementsList = document.getElementById('achievementsList');
-const addAchievementBtn = document.getElementById('addAchievementBtn');
-
-// Add a new achievement to the list
-function addAchievement() {
-    const achievement = prompt('Enter your achievement:');
-    if (achievement) {
-        const listItem = document.createElement('li');
-        listItem.textContent = achievement;
-        achievementsList.appendChild(listItem);
+        achievements.forEach(achievement => {
+            const listItem = document.createElement('li');
+            listItem.textContent = achievement;
+            achievementsList.appendChild(listItem);
+        });
     }
-}
 
-// Show the modal for adding a new achievement when the "Add Achievement" button is clicked
-addAchievementBtn.addEventListener('click', addAchievement);
+    displayAchievements();
 
-// JavaScript code to save the achievements when the "Save" button is clicked
-saveAchievementsBtn.addEventListener('click', () => {
-    // Get the list of achievements from the modal and update your data or perform any necessary actions
-    const achievements = Array.from(achievementsList.children).map(item => item.textContent);
-    console.log('Achievements saved:', achievements);
+    // Function to display achievements in the modal
+    function displayModalAchievements() {
+        const modalAchievementsList = document.getElementById('modalAchievementsList');
+        modalAchievementsList.innerHTML = '';
 
-    // Close the achievements modal
-    achievementsModal.classList.add('hidden');
-});
+        achievements.forEach(achievement => {
+            const listItem = document.createElement('li');
+            listItem.className='flex justify-between bg-green-100 rounded-lg p-2 mb-2'
+            listItem.textContent = achievement;
 
+            // Create a remove button
+            const removeBtn = document.createElement('button');
+            removeBtn.innerHTML = '&times;';
+            removeBtn.className = 'ml-2 text-red-600 hover:text-red-800 focus:outline-none';
 
-// New code
-let achievements = ["First Place in Coding Competition 2022", "Published Research Paper in Computer Science", "Volunteer of the Year Award"];
+            // Event listener for removing the achievement
+            removeBtn.addEventListener('click', () => {
+                const index = achievements.indexOf(achievement);
+                if (index !== -1) {
+                    achievements.splice(index, 1);
+                    displayModalAchievements();
+                }
+            });
 
-// Function to add a new achievement item with a remove button
-function addAchievementItem(achievement) {
-    const listItem = document.createElement('li');
-    listItem.textContent = achievement;
+            // Append the remove button to the achievement item
+            listItem.appendChild(removeBtn);
+            modalAchievementsList.appendChild(listItem);
+        });
+    }
 
-    // Create a remove button
-    const removeBtn = document.createElement('button');
-    removeBtn.textContent = 'Remove';
-    removeBtn.className = 'ml-2 text-red-600 hover:text-red-800 focus:outline-none';
-    removeBtn.addEventListener('click', () => {
-        // Remove the achievement when the remove button is clicked
-        achievementsList.removeChild(listItem);
+    // Edit Achievements Modal
+    const achievementsModal = document.getElementById('achievementsModal');
+    const editAchievementsBtn = document.getElementById('editAchievementsBtn');
+    const closeAchievementsModalBtn = document.getElementById('closeAchievementsModalBtn');
+    const addAchievementInput = document.getElementById('addAchievementInput');
+    const addAchievementBtn = document.getElementById('addAchievementBtn');
+    const saveAchievementsModalBtn = document.getElementById('saveAchievementsModalBtn');
+    const cancelAchievementsModalBtn = document.getElementById('cancelAchievementsModalBtn');
+
+    editAchievementsBtn.addEventListener('click', () => {
+        displayModalAchievements();
+        achievementsModal.classList.remove('hidden');
     });
 
-    // Append the remove button to the achievement item
-    listItem.appendChild(removeBtn);
+    closeAchievementsModalBtn.addEventListener('click', () => {
+        achievementsModal.classList.add('hidden');
+    });
 
-    // Append the achievement item to the list
-    achievementsList.appendChild(listItem);
-}
+    addAchievementBtn.addEventListener('click', () => {
+        const newAchievement = addAchievementInput.value.trim();
+        if (newAchievement !== '') {
+            achievements.push(newAchievement);
+            addAchievementInput.value = '';
+            displayModalAchievements();
+        }
+    });
 
-// Populate existing achievements and add remove buttons
-achievements.forEach(addAchievementItem);
+    saveAchievementsModalBtn.addEventListener('click', () => {
+        // Send the updated achievements to the server using an API call (e.g., fetch)
+        // ...
+
+        // Update the main achievements section with the updated data
+        displayAchievements();
+
+        achievementsModal.classList.add('hidden');
+    });
+
+    cancelAchievementsModalBtn.addEventListener('click', () => {
+        // Reset the input and close the modal
+        addAchievementInput.value = '';
+        achievementsModal.classList.add('hidden');
+    });
+});

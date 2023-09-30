@@ -173,70 +173,61 @@
             </p>
         </section>
 
-        <!-- Acheivements modal -->
-        <!-- Add this button to trigger the achievements modal -->
-
-        <!-- Create the modal HTML structure -->
-        <div id="achievementsModal"
-            class="fixed hidden inset-0 z-50  justify-center items-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-            <div class="relative w-auto my-6 mx-auto max-w-3xl">
-                <!-- Modal content -->
-                <div
-                    class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                    <!-- Header -->
-                    <div
-                        class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                        <h3 class="text-3xl font-semibold">Edit Achievements</h3>
-                        <button id="closeAchievementsModal"
-                            class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
-                            <span
-                                class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                                ×
-                            </span>
-                        </button>
-                    </div>
-                    <!-- Body -->
-                    <div class="relative p-6 flex-auto">
-                        <ul id="achievementsList" class="list-disc list-inside text-gray-700">
-                            <!-- Achievements will be dynamically added here -->
-                        </ul>
-                        <!-- Button to add a new achievement -->
-                        <button id="addAchievementBtn"
-                            class="bg-green-600 text-white active:bg-green-700 mt-4 px-4 py-2 rounded">
-                            Add Achievement
-                        </button>
-                    </div>
-                    <!-- Footer -->
-                    <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                        <button id="saveAchievementsBtn"
-                            class="bg-green-600 text-white active:bg-green-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="button">
-                            Save
-                        </button>
-                        <button id="cancelAchievementsBtn"
-                            class="text-gray-600 background-transparent font-bold uppercase px-6 py-3 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="button">
-                            Cancel
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Achievements Section -->
         <section class="bg-white p-4 shadow-md rounded-lg">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold text-gray-800">Achievements</h2>
-                <button id="editAchievements" class="text-gray-500 hover:text-gray-700">
+                <button id="editAchievementsBtn" class="text-gray-500 hover:text-gray-700">
                     <i class="fas fa-pencil-alt"></i> Edit
                 </button>
             </div>
             <ul id="achievementsList" class="list-disc list-inside text-gray-700">
-                <li>First Place in Coding Competition 2022</li>
-                <li>Published Research Paper in Computer Science</li>
-                <li>Volunteer of the Year Award</li>
+                <!-- Achievements will be dynamically added here -->
             </ul>
         </section>
+
+        <!-- Achievements Modal -->
+        <div id="achievementsModal"
+            class="fixed hidden inset-0 z-50  px-4 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="relative w-full my-6 mx-auto max-w-md">
+                <!-- Modal content -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-md p-4">
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-semibold">Edit Achievements</h3>
+                        <button id="closeAchievementsModalBtn" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="mb-4 flex justify-between">
+                        <input id="addAchievementInput" type="text" placeholder="Add new achievement"
+                            class="w-full py-2 px-3 rounded-md border border-gray-300 focus:ring focus:ring-green-200 focus:outline-none focus:ring-opacity-50">
+
+                        <button id="addAchievementBtn" class="bg-green-500 text-white py-2 px-4 rounded">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+
+                    <ul id="modalAchievementsList" class="mt-4">
+                        <!-- Modal achievements will be dynamically added here -->
+                    </ul>
+                    <!-- Modal Footer -->
+                    <div class="flex items-center mt-4">
+                        <button id="saveAchievementsModalBtn"
+                            class="btn-primary w-1/2 border-2 border-green-500 bg-green-500 text-white py-2 px-4 rounded mr-2">
+                            Save
+                        </button>
+                        <button id="cancelAchievementsModalBtn"
+                            class="btn w-1/2 border-2 border-black py-2 px-4 rounded hover:text-gray-700">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </main>
 
     <script src="../static/scripts/profile.js"></script>
