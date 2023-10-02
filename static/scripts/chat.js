@@ -1,27 +1,27 @@
 // Sample data for chat cards and messages (replace with actual data)
 const chatData = [
     {
-        name: "Harry Bhai",
+        name: "Harris Ali Khan(codewithharry)",
         img: "../static/images/profile_images/harry bhai.jpg",
-        status: "Last seen 2 hours ago",
+        status: "Online",
         messages: [
-            { text: "Hello!", isMine: false },
-            { text: "Hi there!", isMine: true },
+            { text: "Aur Adnan kya haal hain bhai ke", isMine: false },
+            { text: "Bas badiya hai harry bhai", isMine: true },
         ],
     },
     {
         name: "Ashneer Grover",
         img: "../static/images/profile_images/ashneer.jpg",
-        status: "Last seen Tuesday 11:30 PM",
+        status: "Online",
         messages: [
-            { text: "Hey!", isMine: false },
-            { text: "How are you?", isMine: false },
+            { text: "Aur ashneer sir kaisi chal rhi hai crickPe", isMine: true },
+            { text: "Bas adnan sab badiya chal rha hai tu suna", isMine: false },
         ],
     },
     {
         name: "Aman Dhattarwal",
         img: "../static/images/profile_images/m2.jpg",
-        status: "Online",
+        status: "Last seen yesterday",
         messages: [
             { text: "Hi!", isMine: false },
             { text: "Good to see you.", isMine: true },
