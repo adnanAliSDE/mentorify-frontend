@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorify - Mentor Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <main class="flex">
+        <aside id="sidebar" class="md:w-1/4 w-full h-[100vh] bg-white border-r border-gray-200 overflow-y-auto">
+            <!-- Sidebar content goes here -->
+            <h1 class="text-2xl font-bold p-4 border-b border-gray-200">Chats</h1>
+            <div class="chat-list">
+                <!-- Chat cards will be dynamically added here -->
+            </div>
+        </aside>
+        <section class="md:w-3/4 hidden w-full p-4 h-[100vh] bg-gray-200">
+            <!-- Chat window content goes here -->
+            <div class="chat-window">
+                <!-- Chat header -->
+                <div class="flex items-center justify-between bg-white p-4 mb-4">
+                    <div class="flex items-center">
+                        <div id="backButton" class="text-3xl mr-3 font-bold cursor-pointer">&larr;</div>
+                        <div class="user-info flex items-center">
+                            <img  src="../static/images/profile_images/harry bhai.jpg" alt="" width="56"
+                                class="profile-pic rounded-full">
+                            <div class="ml-3">
+                                <h2 class="text-lg font-bold">Harry Bhai</h2>
+                                <p class="online-status text-sm text-gray-500">Online</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button id="deleteChat" class="text-red-600 hover:text-red-800">
+                            <!-- <i class="fas fa-trash-alt"></i> -->
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat messages -->
+                <div class="messages min-h-[60vh]">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+
+                <!-- Message input -->
+                <div class="message-input flex bg-white p-4 mt-4 rounded-lg shadow-md">
+                    <input id="messageInput" type="text"
+                        class="flex-1 px-2 py-1 bg-gray-100 rounded-full focus:outline-none"
+                        placeholder="Type your message...">
+                    <button id="sendMessage" class="ml-4 text-xl text-green-600 focus:outline-none">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../static/scripts/chat.js"></script>
+</body>
+
+</html>
