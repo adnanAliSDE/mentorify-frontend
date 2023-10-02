@@ -1,12 +1,12 @@
 // Sample data for chat cards and messages (replace with actual data)
 const chatData = [
     {
-        name: "Harris Ali Khan(codewithharry)",
+        name: "Codewithharry",
         img: "../static/images/profile_images/harry bhai.jpg",
         status: "Online",
         messages: [
             { text: "Aur Adnan kya haal hain bhai ke", isMine: false },
-            { text: "Bas badiya hai harry bhai", isMine: true },
+            { text: "Bas badiya hun harry bhai", isMine: true },
         ],
     },
     {
